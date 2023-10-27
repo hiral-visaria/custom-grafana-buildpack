@@ -1,0 +1,4 @@
+yesoreyeram-boomtable-panel
+ryantxu-annolist-panel
+grafana-piechart-panel
+camptocamp-prometheus-alertmanager-datasource

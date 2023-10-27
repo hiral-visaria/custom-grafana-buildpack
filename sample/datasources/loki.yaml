@@ -1,0 +1,10 @@
+# config file version
+apiVersion: 1
+
+deleteDatasources:
+- name: Loki
+
+datasources:
+- name: Loki
+  type: loki
+  url: https://loki.logging.springernature.io
