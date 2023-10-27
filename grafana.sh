@@ -34,12 +34,12 @@ export DEFAULT_DATASOURCE_TIMEINTERVAL="${DEFAULT_DATASOURCE_TIMEINTERVAL:-60s}"
 # Variables exported, they are automatically filled from the
 # service broker instances.
 # See reset_DB for default values!
-export DB_TYPE="postgres"
-export DB_USER=""
+export DB_TYPE="sqlite3"
+export DB_USER="root"
 export DB_HOST=""
 export DB_PASS=""
 export DB_PORT=""
-export DB_NAME=""
+export DB_NAME="grafana"
 export DB_CA_CERT=""
 export DB_CLIENT_CERT=""
 export DB_CLIENT_KEY=""
@@ -97,12 +97,12 @@ get_db_vcap_service_type() {
 }
 
 reset_env_DB() {
-  DB_TYPE="postgres"
-  DB_USER=""
+  DB_TYPE="sqlite3"
+  DB_USER="root"
   DB_HOST=""
   DB_PASS=""
   DB_PORT=""
-  DB_NAME=""
+  DB_NAME="grafana"
   DB_CA_CERT=""
   DB_CLIENT_CERT=""
   DB_CLIENT_KEY=""
