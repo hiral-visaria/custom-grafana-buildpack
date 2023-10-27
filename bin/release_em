@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# bin/release <build-dir>
+# bin/release_em <build-dir>
 set -e
 
 BUILD_DIR=$(cd "$1/" && pwd)
@@ -13,4 +13,4 @@ cat <<EOF
 default_process_types:
   web: /home/vcap/app/.grafana_em.sh
 EOF
-
+`
