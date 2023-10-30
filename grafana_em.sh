@@ -95,6 +95,19 @@ get_db_vcap_service() {
     fi
 }
 
+reset_env_DB() {
+    DB_TYPE="sqlite3"
+    DB_USER="root"
+    DB_HOST=""
+    DB_PASS=""
+    DB_PORT=""
+    DB_NAME="grafana"
+    DB_CA_CERT=""
+    DB_CLIENT_CERT=""
+    DB_CLIENT_KEY=""
+    DB_CERT_NAME=""
+    DB_TLS=""
+}
 
 # Sets all DB
 set_sql_databases() {
