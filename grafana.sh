@@ -239,42 +239,11 @@ set_sql_databases() {
     db=$(get_db_vcap_service "${DB_BINDING_NAME}")
     if [[ -n "${db}" ]]
     then
-        # set_env_DB "${db}" >/dev/null
-        # set_DB_proxy "${db}" >/dev/null
-        set_vcap_datasource_postgres "${db}" >/dev/null
+        set_env_DB "${db}" >/dev/null
+        set_DB_proxy "${db}" >/dev/null
     fi
 }
 
-set_vcap_datasource_postgres() {
-  local datasource="${1}"
-
-  local hostname=$(jq -r -e '.credentials.uri | split("://")[1] | split(":")[1] | split("@")[1] | split(":")[0]' <<<"${datasource}")
-  local port=$(jq -r -e '.credentials.port' <<<"${datasource}")
-  local url="${hostname}:${port}"
-  local user=$(jq -r '.credentials.username | select (.!=null)' <<<"${datasource}")
-  local pass=$(jq -r '.credentials.password | select (.!=null)' <<<"${datasource}")
-  local dbname=$(jq -r '.credentials.dbname | select (.!=null)' <<<"${datasource}")
-  mkdir -p "${APP_ROOT}/datasources"
-
-  # Be careful, this is a HERE doc with tabs indentation!!
-  cat <<-EOF >"${APP_ROOT}/datasources/postgres.yml"
-	apiVersion: 1
-
-	datasources:
-- name: Postgres
-  type: postgres
-  editable: false
-  allowUiUpdates: false
-  uid: my-postgres-db
-  url: ${url}
-  user: ${user}
-  database: ${dbname}
-  jsonData:
-    sslmode: require
-  secureJsonData:
-    password: ${pass}
-	EOF
-}
 
 set_vcap_datasource_prometheus() {
     local datasource="${1}"
